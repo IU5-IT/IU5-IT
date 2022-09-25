@@ -7,5 +7,5 @@
 3. [Lab-03](https://github.com/IU5-IT/IU5-IT/tree/main/Term-3/BKIT-2022/Lab-03)
 
 ## Modules tests:
-1. [MT-01](https://github.com/IU5-IT/IU5-IT/tree/main/Term-3/BKIT-2022/Module-Test-01)
-2. [MT-02](https://github.com/IU5-IT/IU5-IT/tree/main/Term-3/BKIT-2022/Module-Test-02) 
+1. [MT-01](https://github.com/IU5-IT/IU5-IT/tree/main/Term-3/BKIT-2022/Module-test-01)
+2. [MT-02](https://github.com/IU5-IT/IU5-IT/tree/main/Term-3/BKIT-2022/Module-test-02) 
