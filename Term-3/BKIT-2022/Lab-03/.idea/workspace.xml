@@ -2,7 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="852ac606-16c5-44b9-ba14-d77c09d37c7c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Правоведение/Правоведение.pages" beforeDir="false" afterPath="$PROJECT_DIR$/../../Правоведение/Правоведение.pages" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab-01/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Lab-01/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-01/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-01/.idea/Lab-01.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab-01/.idea/Lab-01.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-01/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab-01/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab-01/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-01/Lab-01/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-01/Lab-01/.idea/Lab-01.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-01/Lab-01/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-01/Lab-01/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-01/Lab-01/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-01/Lab-01/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-01/Lab-01/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-01/Lab-01/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-01/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-01/Report/Report-01.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-01/Report/Report-01.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-02/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab-02/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lab-02/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab-02/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
