@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="852ac606-16c5-44b9-ba14-d77c09d37c7c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Правоведение/Правоведение.pages" beforeDir="false" afterPath="$PROJECT_DIR$/../../Правоведение/Правоведение.pages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/lab-03.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lab-03.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +39,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/dmitriy/IU5-IT/Term-3/BKIT-2022/Lab-03&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
