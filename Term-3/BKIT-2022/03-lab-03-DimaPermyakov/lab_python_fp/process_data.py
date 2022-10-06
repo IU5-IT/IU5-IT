@@ -1,4 +1,5 @@
 # Copyright 2022 Dmitriy <dimapermyakov55@gmail.com>
+
 from lab_python_fp.print_result import print_result
 from lab_python_fp.cm_timer import cm_timer_1
 from lab_python_fp.get_random import get_random
