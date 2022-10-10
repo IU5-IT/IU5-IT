@@ -4,23 +4,6 @@
 
 def field(items, *args):
     assert len(args) > 0, 'The parameter "args" is empty!'
-    # Uninteresting method.
-    # if len(args) == 1:
-    #     for item in items:
-    #         for el in item:
-    #             if el == args[0] and item[el] is not None:
-    #                 print(item[el], end=' ')
-    #     print()
-    # else:
-    #     for item in items:
-    #         help_dict = dict()
-    #         for el in item:
-    #             for argument in args:
-    #                 if el == argument and item[argument] is not None:
-    #                     help_dict[el] = item[el]
-    #         print(help_dict)
-
-    # Interesting method.
     if len(args) == 1:
         return (item[el] for item in items for el in item if el == args[0] and item[el] is not None)
     else:
