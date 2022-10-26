@@ -8,8 +8,8 @@
 - [Main.](https://github.com/IU5-IT/IU5-IT/blob/main/Term-3/BKIT-2022/Module-test-01/03-moduleTest-01-DmitriyPermyakov/src/main.py)
 
 ## Report.
-- [Word.](https://github.com/IU5-IT/IU5-IT/blob/main/Term-3/BKIT-2022/Module-test-01/03-moduleTest-01-DmitriyPermyakov/docs/Repot/ModuleTestReport.docx)
-- [PDF.](https://github.com/IU5-IT/IU5-IT/blob/main/Term-3/BKIT-2022/Module-test-01/03-moduleTest-01-DmitriyPermyakov/docs/Repot/ModuleTestReport.pdf)
+- [Word.](https://github.com/IU5-IT/IU5-IT/blob/main/Term-3/BKIT-2022/Module-test-01/03-moduleTest-01-DmitriyPermyakov/docs/Report/ModuleTestReport.docx)
+- [PDF.](https://github.com/IU5-IT/IU5-IT/blob/main/Term-3/BKIT-2022/Module-test-01/03-moduleTest-01-DmitriyPermyakov/docs/Report/ModuleTestReport.pdf)
 
 ### The task of the module test is located [here.](https://github.com/IU5-IT/IU5-IT/blob/main/Term-3/BKIT-2022/Module-test-01/03-moduleTest-01-DmitriyPermyakov/docs/Task.md)
 
