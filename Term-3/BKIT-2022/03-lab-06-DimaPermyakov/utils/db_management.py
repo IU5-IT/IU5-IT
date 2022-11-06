@@ -8,14 +8,21 @@ db = sqlite3.connect('../data/users.db')
 cursor = db.cursor()
 
 --- Создание.
+db = sqlite3.connect('../data/users.db')
+cursor = db.cursor()
 cursor.execute("""CREATE TABLE users (
     id_user integer,
     name text,
     age integer,
     place text,
+    university text,
     department text,
-    description text
+    description text,
+    photo text
 )""")
+db.commit()
+db.close()
+
 
 --- Добавление данных.
 cursor.execute(
@@ -68,12 +75,13 @@ def set_user_date(id_user: int, data: dict, filename: str = 'data/users.db'):
     db = sqlite3.connect(filename)
     cursor = db.cursor()
     cursor.execute(
-        "INSERT INTO users VALUES ({}, '{}', {}, '{}', '{}', '{}', '{}')".format(id_user, data['name'],
-                                                                                 data['age'],
-                                                                                 data['place'],
-                                                                                 data['university'],
-                                                                                 data['department'],
-                                                                                 data['description'])
+        "INSERT INTO users VALUES ({}, '{}', {}, '{}', '{}', '{}', '{}', '{}')".format(id_user, data['name'],
+                                                                                       data['age'],
+                                                                                       data['place'],
+                                                                                       data['university'],
+                                                                                       data['department'],
+                                                                                       data['description'],
+                                                                                       data['photo'])
     )
     db.commit()
     db.close()

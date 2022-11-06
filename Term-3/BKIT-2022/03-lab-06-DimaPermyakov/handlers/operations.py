@@ -31,6 +31,17 @@ async def handler_start(message: types.Message):
                f"О себе: {user_data[6]}\n"
 
         await message.answer(text=text)
+        await message.answer_photo(
+            photo=user_data[7],
+            caption=md.text(
+                md.text('Так выглядит твоя анкета:\n'),
+                md.text(user_data[1] + ", " + user_data[2] + ", " + user_data[3]),
+                md.text(user_data[4] + ", " + user_data[5]),
+                md.text('О себе:'),
+                md.text(user_data[6]),
+                sep='\n',
+            )
+        )
         # TODO: А что дальше? Придумать.
 
     else:
@@ -106,7 +117,7 @@ def register_handlers(dp_main: Dispatcher):
     dp_main.register_message_handler(handler_start, commands=['start'])
     dp_main.register_message_handler(catch_photo, content_types=['photo'], state=FSMUsers.photo)
     dp_main.register_message_handler(catch_name, state=FSMUsers.name)
-    dp_main.register_message_handler(catch_age, state=FSMUsers.age)
+    dp_main.register_message_handler(catch_age, lambda message: message.text.isdigit(), state=FSMUsers.age)
     dp_main.register_message_handler(catch_place, state=FSMUsers.place)
     dp_main.register_message_handler(catch_university, state=FSMUsers.university)
     dp_main.register_message_handler(catch_department, state=FSMUsers.department)
