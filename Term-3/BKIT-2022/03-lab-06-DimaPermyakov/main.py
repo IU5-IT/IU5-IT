@@ -8,8 +8,8 @@ async def on_startup(_):
     print('The bot was included.')
 
 
-from handlers import operations
+if __name__ == '__main__':
+    from handlers import operations
 
-# operations
-
-executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
+    operations.register_handlers(dp)
+    executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
