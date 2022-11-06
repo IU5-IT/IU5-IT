@@ -2,18 +2,17 @@
 from aiogram import Dispatcher, types
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.dispatcher import FSMContext
-from utils.manage_db import write_data
 import aiogram.utils.markdown as md
 from create_bot import dp, bot
-from utils.get_data import *
-from utils.manage_db import load_data
+from utils.db_management import *
 
 
 class FSMUsers(StatesGroup):
     id_user = State()
-    status_present = State()
     photo = State()
     name = State()
+    age = State()
+    place = State()
     university = State()
     department = State()
     description = State()
@@ -21,20 +20,23 @@ class FSMUsers(StatesGroup):
 
 async def handler_start(message: types.Message):
     # Если пользователь уже зарегистрирован.
-    if get_status(str(message.chat.id)):
-        id_temp: str = str(message.chat.id)
+    user_data = get_user_data(message.chat.id)
+    if user_data is not None:
         text = f"Класс! Вы уже зарегистрированы! Вот ваши данные:\n" \
-               f"Имя: {get_name(id_temp)}\n" \
-               f"Университет: {get_university(id_temp)}\n" \
-               f"Факультет: {get_department(id_temp)}\n" \
-               f"О себе: {get_description(id_temp)}\n"
+               f"Имя: {user_data[1]}\n" \
+               f"Возраст: {user_data[2]}\n" \
+               f"Место жительства: {user_data[3]}\n" \
+               f"Университет: {user_data[4]}\n" \
+               f"Факультет: {user_data[5]}\n" \
+               f"О себе: {user_data[6]}\n"
+
         await message.answer(text=text)
         # TODO: А что дальше? Придумать.
 
     else:
         await message.answer("Давайте Вас зарегистрируем!")
         await FSMUsers.photo.set()
-        await message.answer("Отправьте фото")
+        await message.answer("Отправьте ваше фото:")
 
 
 async def catch_photo(message: types.Message, state: FSMContext):
@@ -47,6 +49,20 @@ async def catch_photo(message: types.Message, state: FSMContext):
 async def catch_name(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['name'] = message.text
+    await FSMUsers.next()
+    await message.reply('Введите ваш возраст:')
+
+
+async def catch_age(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['age'] = message.text
+    await FSMUsers.next()
+    await message.reply('Введите ваш город:')
+
+
+async def catch_place(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['place'] = message.text
     await FSMUsers.next()
     await message.reply('Введите название вашего университета:')
 
@@ -73,14 +89,16 @@ async def catch_description(message: types.Message, state: FSMContext):
             photo=data['photo'],
             caption=md.text(
                 md.text('Так выглядит твоя анкета:\n'),
-                md.text(data['name'] + ", " + data['university'] + ", " + data['department']),
+                md.text(data['name'] + ", " + data['age'] + ", " + data['place']),
+                md.text(data['university'] + ", " + data['department']),
+                md.text('О себе:'),
                 md.text(data['description']),
                 sep='\n',
             )
         )
-        res = dict()
-        res[str(message.chat.id)] = dict(data).copy()
-        write_data(res)
+        # Добавляет в SQL таблицу.
+        set_user_date(message.chat.id, dict(data))
+
     await state.finish()
 
 
@@ -88,6 +106,8 @@ def register_handlers(dp_main: Dispatcher):
     dp_main.register_message_handler(handler_start, commands=['start'])
     dp_main.register_message_handler(catch_photo, content_types=['photo'], state=FSMUsers.photo)
     dp_main.register_message_handler(catch_name, state=FSMUsers.name)
+    dp_main.register_message_handler(catch_age, state=FSMUsers.age)
+    dp_main.register_message_handler(catch_place, state=FSMUsers.place)
     dp_main.register_message_handler(catch_university, state=FSMUsers.university)
     dp_main.register_message_handler(catch_department, state=FSMUsers.department)
     dp_main.register_message_handler(catch_description, state=FSMUsers.description)
