@@ -35,7 +35,7 @@ async def handler_start(message: types.Message):
             photo=user_data[7],
             caption=md.text(
                 md.text('Так выглядит твоя анкета:\n'),
-                md.text(user_data[1] + ", " + user_data[2] + ", " + user_data[3]),
+                md.text(user_data[1] + ", " + str(user_data[2]) + ", " + user_data[3]),
                 md.text(user_data[4] + ", " + user_data[5]),
                 md.text('О себе:'),
                 md.text(user_data[6]),
