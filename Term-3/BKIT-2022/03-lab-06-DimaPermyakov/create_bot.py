@@ -1,8 +1,12 @@
 # Copyright © 2022 mightyK1ngRichard <dimapermyakov55@gmail.com>
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
+from dotenv import load_dotenv
+import os
 
-TOKEN = '5618479465:AAFefyhHZJ_7hd7jii0Jo9I1dorODPzEm9Q'
+load_dotenv()
+TOKEN = os.getenv('TOKEN')
+print(TOKEN)
 
 bot = Bot(TOKEN)
 storage = MemoryStorage()
