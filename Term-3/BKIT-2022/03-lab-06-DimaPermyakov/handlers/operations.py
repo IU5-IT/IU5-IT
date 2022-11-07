@@ -20,6 +20,10 @@ class FSMUsers(StatesGroup):
     description = State()
 
 
+class FSMChangeUserData(StatesGroup):
+    photo = State()
+
+
 async def handler_start(message: types.Message):
     # Если пользователь уже зарегистрирован.
     user_data = get_user_data(message.chat.id)
@@ -49,7 +53,7 @@ async def catch_photo(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['photo'] = message.photo[0].file_id
 
-    print(len(data))
+    # print(len(data))
     await FSMUsers.next()
     await message.reply('Теперь введите Ваше имя:')
     # TODO: Поменять на новую машину состояний.
@@ -154,7 +158,7 @@ async def all_msg_handler(message: types.Message):
         await message.answer("Отправьте ваше фото:", reply_markup=types.ReplyKeyboardRemove())
 
     elif button_text == 'Изменить фото':
-        await FSMUsers.photo.set()
+        await FSMChangeUserData.photo.set()
         await message.reply("Отправьте ваше новое фото:", reply_markup=types.ReplyKeyboardRemove())
 
     elif button_text == 'Изменить текст анкеты':
@@ -182,6 +186,27 @@ async def all_msg_handler(message: types.Message):
         reply_text = "Keep calm... Everything is fine, you just a silly"
         await message.reply(reply_text)
         await message.delete()
+
+
+async def update_user_photo_fsm(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['photo'] = message.photo[0].file_id
+    temp_id = message.chat.id
+    update_user_photo(temp_id, data['photo'])
+    new_data = get_user_data(temp_id)
+    await message.answer_photo(
+        photo=new_data[7],
+        caption=md.text(
+            md.text('Так выглядит Ваша анкета:\n'),
+            md.text(f'{new_data[1]}, {new_data[2]}, {new_data[3]}'),
+            md.text(f'{new_data[4]}, {new_data[5]}'),
+            md.text('О себе:'),
+            md.text(new_data[6]),
+            sep='\n',
+        )
+    )
+    await state.finish()
+    await message.answer('Выберите новый сценарий:', reply_markup=start_markup)
 
 
 @dp.callback_query_handler(text=['like', 'write', 'dislike', 'info'])
@@ -233,6 +258,7 @@ async def inline_kb_answer_callback_handler(query: types.CallbackQuery):
 def register_handlers(dp_main: Dispatcher):
     dp_main.register_message_handler(handler_start, commands=['start'])
     dp_main.register_message_handler(catch_photo, content_types=['photo'], state=FSMUsers.photo)
+    dp_main.register_message_handler(update_user_photo_fsm, content_types=['photo'], state=FSMChangeUserData.photo)
     dp_main.register_message_handler(catch_name, state=FSMUsers.name)
     dp_main.register_message_handler(catch_age, lambda message: message.text.isdigit(), state=FSMUsers.age)
     dp_main.register_message_handler(catch_place, state=FSMUsers.place)
