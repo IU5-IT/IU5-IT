@@ -1,6 +1,7 @@
 # Copyright © 2022 mightyK1ngRichard <dimapermyakov55@gmail.com>
 
 import sqlite3
+from random import choice
 
 # Теория.
 '''
@@ -71,6 +72,17 @@ def get_user_data(id_user: int, filename: str = 'data/users.db') -> tuple | None
     return res
 
 
+def get_random_user_form(id_user: int, filename: str = 'data/users.db') -> tuple:
+    db = sqlite3.connect(filename)
+    cursor = db.cursor()
+    cursor.execute(f"SELECT id_user FROM users WHERE id_user <> {id_user}")
+    id_user: int = choice([el[0] for el in cursor.fetchall()])
+    res = get_user_data(id_user, filename)
+    db.commit()
+    db.close()
+    return res
+
+
 def set_user_date(id_user: int, data: dict, filename: str = 'data/users.db'):
     db = sqlite3.connect(filename)
     cursor = db.cursor()
@@ -110,6 +122,14 @@ def update_user_description(id_user: int, description: str, filename: str = 'dat
     db.close()
 
 
+def update_user_photo(id_user: int, photo: str, filename: str = 'data/users.db'):
+    db = sqlite3.connect(filename)
+    cursor = db.cursor()
+    cursor.execute(f"UPDATE users SET photo = '{photo}' WHERE id_user = {id_user}")
+    db.commit()
+    db.close()
+
+
 def user_presents(id_user: int, filename: str = 'data/users.db') -> bool:
     """Checking, is user in data or is not.
     :param id_user: id of the checking user.
@@ -127,7 +147,7 @@ def user_presents(id_user: int, filename: str = 'data/users.db') -> bool:
 # update_name(0, 'Richard', '../data/users.db') res = get_user_data(0, '../data/users.db') print(res) print((
 # get_user_data(1, '../data/users.db'))) print(beautiful_tuple_of_user_data(0, '../data/users.db')) update_user_data(
 # 709333344, {'name': 'Nick', 'age': '19', 'place': 'Москва', 'university': 'МГТУ', 'department': 'ФН2',
-# 'description': '🤡', 'photo': 'AgACAgIAAxkBAAOfY2ghBK_eQjXsaOo8v80vZURijdkAAu--MRtUqEBL2ktqWFcO3ioBAAMCAANzAAMrBA
+# 'description': 'глупый', 'photo': 'AgACAgIAAxkBAAOfY2ghBK_eQjXsaOo8v80vZURijdkAAu--MRtUqEBL2ktqWFcO3ioBAAMCAANzAAMrBA
 # '}, '../data/users.db')
 
 # update_user_data(0, dict(name='Richard', age=19, place='Moscow', university='BMSTU', department='IU5',
@@ -143,3 +163,4 @@ def user_presents(id_user: int, filename: str = 'data/users.db') -> bool:
 # db.close()
 
 # print(user_presents(617139029, '../data/users.db'))
+# print(get_random_user_form('../data/users.db'))

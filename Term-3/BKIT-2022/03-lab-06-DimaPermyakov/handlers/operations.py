@@ -3,9 +3,10 @@ from aiogram import Dispatcher, types
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.dispatcher import FSMContext
 import aiogram.utils.markdown as md
-from keyboards.menu_bts import *
-from create_bot import dp, bot
+from keyboards.menu_bts import start_markup
+from keyboards.search_ib import search_markup
 from utils.db_management import *
+from create_bot import dp
 
 
 class FSMUsers(StatesGroup):
@@ -47,8 +48,27 @@ async def handler_start(message: types.Message):
 async def catch_photo(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['photo'] = message.photo[0].file_id
+
+    print(len(data))
     await FSMUsers.next()
     await message.reply('Теперь введите Ваше имя:')
+    # TODO: Поменять на новую машину состояний.
+    # else:
+    #     temp_id = message.chat.id
+    #     update_user_photo(temp_id, data['photo'])
+    #     new_data = get_user_data(temp_id)
+    #     await message.answer_photo(
+    #         photo=new_data[7],
+    #         caption=md.text(
+    #             md.text('Так выглядит Ваша анкета:\n'),
+    #             md.text(f'{new_data[1]}, {new_data[2]}, {new_data[3]}'),
+    #             md.text(f'{new_data[4]}, {new_data[5]}'),
+    #             md.text('О себе:'),
+    #             md.text(new_data[6]),
+    #             sep='\n',
+    #         )
+    #     )
+    #     await message.answer('Выберите новый сценарий:', reply_markup=start_markup)
 
 
 async def catch_name(message: types.Message, state: FSMContext):
@@ -122,9 +142,8 @@ async def catch_description(message: types.Message, state: FSMContext):
                     sep='\n',
                 )
             )
-            await message.answer('Выберите новый сценарий:', reply_markup=start_markup)
-
     await state.finish()
+    await message.answer('Выберите новый сценарий:', reply_markup=start_markup)
 
 
 async def all_msg_handler(message: types.Message):
@@ -134,18 +153,81 @@ async def all_msg_handler(message: types.Message):
         await FSMUsers.photo.set()
         await message.answer("Отправьте ваше фото:", reply_markup=types.ReplyKeyboardRemove())
 
+    elif button_text == 'Изменить фото':
+        await FSMUsers.photo.set()
+        await message.reply("Отправьте ваше новое фото:", reply_markup=types.ReplyKeyboardRemove())
+
     elif button_text == 'Изменить текст анкеты':
         await FSMUsers.description.set()
         await message.reply("Расскажите что-то о себе:", reply_markup=types.ReplyKeyboardRemove())
 
     elif button_text == 'Искать друзей 🤝':
-        reply_text = "В разработке"
-        await message.reply(reply_text)
+        user_data = get_random_user_form(message.chat.id)
+        await message.answer('Поиск друзей!', reply_markup=types.ReplyKeyboardRemove())
+        await message.delete()
+        await message.answer_photo(
+            photo=user_data[7],
+            caption=md.text(
+                md.text(f"{user_data[1]}, {user_data[2]}, {user_data[3]}"),
+                md.text(f"{user_data[4]}, {user_data[5]}"),
+                md.text('О себе:'),
+                md.text(user_data[6]),
+                sep='\n',
+            ),
+            reply_markup=search_markup
+        )
+        # await message.reply(reply_text)
 
     else:
         reply_text = "Keep calm... Everything is fine, you just a silly"
         await message.reply(reply_text)
         await message.delete()
+
+
+@dp.callback_query_handler(text=['like', 'write', 'dislike', 'info'])
+async def inline_kb_answer_callback_handler(query: types.CallbackQuery):
+    answer_data = query.data
+
+    if answer_data == 'like':
+        text = 'В разработке!'
+        await query.message.answer(text)
+
+    elif answer_data == 'write':
+        text = 'В разработке!'
+        await query.message.answer(text)
+
+    elif answer_data == 'dislike':
+        user_data = get_random_user_form(query.message.chat.id)
+        await query.message.answer_photo(
+            photo=user_data[7],
+            caption=md.text(
+                md.text(f"{user_data[1]}, {user_data[2]}, {user_data[3]}"),
+                md.text(f"{user_data[4]}, {user_data[5]}"),
+                md.text('О себе:'),
+                md.text(user_data[6]),
+                sep='\n',
+            ),
+            reply_markup=search_markup
+        )
+
+    elif answer_data == 'info':
+        user_data = get_user_data(query.message.chat.id)
+        await query.message.answer_photo(
+            photo=user_data[7],
+            caption=md.text(
+                md.text('Так выглядит Ваша анкета:\n'),
+                md.text(f'{user_data[1]}, {user_data[2]}, {user_data[3]}'),
+                md.text(f'{user_data[4]}, {user_data[5]}'),
+                md.text('О себе:'),
+                md.text(user_data[6]),
+                sep='\n',
+            )
+        )
+        await query.message.answer('Выберите дальнейший сценарий:', reply_markup=start_markup)
+
+    else:
+        text = f'Unexpected callback data {answer_data!r}!'
+        await query.message.answer(text)
 
 
 def register_handlers(dp_main: Dispatcher):
@@ -157,5 +239,6 @@ def register_handlers(dp_main: Dispatcher):
     dp_main.register_message_handler(catch_university, state=FSMUsers.university)
     dp_main.register_message_handler(catch_department, state=FSMUsers.department)
     dp_main.register_message_handler(catch_description, state=FSMUsers.description)
+    # dp_main.register_message_handler(inline_kb_answer_callback_handler, text=['like', 'write', 'dislike', 'info'])
     # Last point!! Important!
     dp_main.register_message_handler(all_msg_handler)
