@@ -145,10 +145,8 @@ def user_presents(id_user: int, filename: str = 'data/users.db') -> bool:
     return False if len(lst) == 0 else True
 
 # update_name(0, 'Richard', '../data/users.db') res = get_user_data(0, '../data/users.db') print(res) print((
-# get_user_data(1, '../data/users.db'))) print(beautiful_tuple_of_user_data(0, '../data/users.db')) update_user_data(
-# 709333344, {'name': 'Nick', 'age': '19', 'place': 'Москва', 'university': 'МГТУ', 'department': 'ФН2',
-# 'description': 'глупый', 'photo': 'AgACAgIAAxkBAAOfY2ghBK_eQjXsaOo8v80vZURijdkAAu--MRtUqEBL2ktqWFcO3ioBAAMCAANzAAMrBA
-# '}, '../data/users.db')
+# get_user_data(1, '../data/users.db')))
+# print(beautiful_tuple_of_user_data(0, '../data/users.db'))
 
 # update_user_data(0, dict(name='Richard', age=19, place='Moscow', university='BMSTU', department='IU5',
 # description='I like only two things: coffee and my GitHub: https://github.com/mightyK1ngRichard',

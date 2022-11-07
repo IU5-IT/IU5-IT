@@ -2,8 +2,7 @@
 
 from aiogram.utils import executor
 from create_bot import dp
-from aiogram import Dispatcher, types
-from aiogram.dispatcher.filters.state import State, StatesGroup
+from aiogram import types
 
 
 async def on_startup(_):
