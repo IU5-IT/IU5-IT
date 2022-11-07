@@ -102,6 +102,14 @@ def update_user_data(id_user: int, data: dict, filename: str = 'data/users.db'):
     db.close()
 
 
+def update_user_description(id_user: int, description: str, filename: str = 'data/users.db'):
+    db = sqlite3.connect(filename)
+    cursor = db.cursor()
+    cursor.execute(f"UPDATE users SET description = '{description}' WHERE id_user = {id_user}")
+    db.commit()
+    db.close()
+
+
 def user_presents(id_user: int, filename: str = 'data/users.db') -> bool:
     """Checking, is user in data or is not.
     :param id_user: id of the checking user.
@@ -115,7 +123,6 @@ def user_presents(id_user: int, filename: str = 'data/users.db') -> bool:
     db.commit()
     db.close()
     return False if len(lst) == 0 else True
-
 
 # update_name(0, 'Richard', '../data/users.db') res = get_user_data(0, '../data/users.db') print(res) print((
 # get_user_data(1, '../data/users.db'))) print(beautiful_tuple_of_user_data(0, '../data/users.db')) update_user_data(

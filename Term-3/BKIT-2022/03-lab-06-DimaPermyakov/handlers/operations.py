@@ -29,9 +29,9 @@ async def handler_start(message: types.Message):
             photo=user_data[7],
             caption=md.text(
                 md.text('Так выглядит Ваша анкета:\n'),
-                md.text(user_data[1] + ", " + str(user_data[2]) + ", " + user_data[3]),
-                md.text(user_data[4] + ", " + user_data[5]),
-                md.text('О себе:\n'),
+                md.text(f'{user_data[1]}, {user_data[2]}, {user_data[3]}'),
+                md.text(f'{user_data[4]}, {user_data[5]}'),
+                md.text('О себе:'),
                 md.text(user_data[6]),
                 sep='\n',
             )
@@ -90,22 +90,39 @@ async def catch_description(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['description'] = message.text
     async with state.proxy() as data:
-        await message.answer_photo(
-            photo=data['photo'],
-            caption=md.text(
-                md.text('Так выглядит Ваша анкета:\n'),
-                md.text(data['name'] + ", " + data['age'] + ", " + data['place']),
-                md.text(data['university'] + ", " + data['department']),
-                md.text('О себе:\n'),
-                md.text(data['description']),
-                sep='\n',
+        try:
+            await message.answer_photo(
+                photo=data['photo'],
+                caption=md.text(
+                    md.text('Так выглядит Ваша анкета:\n'),
+                    md.text(f"{data['name']}, {data['age']}, {data['place']}"),
+                    md.text(f"{data['university']}, {data['department']}"),
+                    md.text('О себе:'),
+                    md.text(data['description']),
+                    sep='\n',
+                )
             )
-        )
-        # Добавляет в SQL таблицу.
-        if user_presents(message.chat.id):
-            update_user_data(message.chat.id, dict(data))
-        else:
-            set_user_date(message.chat.id, dict(data))
+            # Добавляет в SQL таблицу.
+            if user_presents(message.chat.id):
+                update_user_data(message.chat.id, dict(data))
+            else:
+                set_user_date(message.chat.id, dict(data))
+        except KeyError:
+            temp_id = message.chat.id
+            update_user_description(temp_id, message.text)
+            new_data = get_user_data(temp_id)
+            await message.answer_photo(
+                photo=new_data[7],
+                caption=md.text(
+                    md.text('Так выглядит Ваша анкета:\n'),
+                    md.text(f'{new_data[1]}, {new_data[2]}, {new_data[3]}'),
+                    md.text(f'{new_data[4]}, {new_data[5]}'),
+                    md.text('О себе:'),
+                    md.text(new_data[6]),
+                    sep='\n',
+                )
+            )
+            await message.answer('Выберите новый сценарий:', reply_markup=start_markup)
 
     await state.finish()
 
@@ -118,8 +135,8 @@ async def all_msg_handler(message: types.Message):
         await message.answer("Отправьте ваше фото:", reply_markup=types.ReplyKeyboardRemove())
 
     elif button_text == 'Изменить текст анкеты':
-        reply_text = "В разработке"
-        await message.reply(reply_text)
+        await FSMUsers.description.set()
+        await message.reply("Расскажите что-то о себе:", reply_markup=types.ReplyKeyboardRemove())
 
     elif button_text == 'Искать друзей 🤝':
         reply_text = "В разработке"
