@@ -87,8 +87,52 @@ def set_user_date(id_user: int, data: dict, filename: str = 'data/users.db'):
     db.close()
 
 
-# update_name(0, 'Richard', '../data/users.db')
-# res = get_user_data(0, '../data/users.db')
-# print(res)
-# print((get_user_data(1, '../data/users.db')))
-# print(beautiful_tuple_of_user_data(0, '../data/users.db'))
+def update_user_data(id_user: int, data: dict, filename: str = 'data/users.db'):
+    db = sqlite3.connect(filename)
+    cursor = db.cursor()
+    cursor.execute(
+        "UPDATE users SET name = '{}', age={}, place = '{}', university = '{}', department = '{}', description = '{}',"
+        "photo = '{}'  WHERE id_user = {}".format(data['name'], data['age'], data['place'], data['university'],
+                                                  data['department'],
+                                                  data['description'],
+                                                  data['photo'],
+                                                  id_user))
+
+    db.commit()
+    db.close()
+
+
+def user_presents(id_user: int, filename: str = 'data/users.db') -> bool:
+    """Checking, is user in data or is not.
+    :param id_user: id of the checking user.
+    :param filename: way and name for file.
+    :return: user status True/False.
+    """
+    db = sqlite3.connect(filename)
+    cursor = db.cursor()
+    cursor.execute(f"SELECT id_user FROM users WHERE id_user = {id_user}")
+    lst = cursor.fetchall()
+    db.commit()
+    db.close()
+    return False if len(lst) == 0 else True
+
+
+# update_name(0, 'Richard', '../data/users.db') res = get_user_data(0, '../data/users.db') print(res) print((
+# get_user_data(1, '../data/users.db'))) print(beautiful_tuple_of_user_data(0, '../data/users.db')) update_user_data(
+# 709333344, {'name': 'Nick', 'age': '19', 'place': 'Москва', 'university': 'МГТУ', 'department': 'ФН2',
+# 'description': '🤡', 'photo': 'AgACAgIAAxkBAAOfY2ghBK_eQjXsaOo8v80vZURijdkAAu--MRtUqEBL2ktqWFcO3ioBAAMCAANzAAMrBA
+# '}, '../data/users.db')
+
+# update_user_data(0, dict(name='Richard', age=19, place='Moscow', university='BMSTU', department='IU5',
+# description='I like only two things: coffee and my GitHub: https://github.com/mightyK1ngRichard',
+# photo='https://sun1.userapi.com/sun1-92/s/v1/ig2/lf3_ugEwdsFS8tmjqLxfFTM3Yax7_lZ7fU0840KOWVvgDOYNnwvS
+# -zfZ3jj2g5p0YfITVkbNJ1V5Dvjj6naWUj6D.jpg?size=1080x1080&quality=95&type=album'), '../data/users.db')
+
+# --- Удалил ласт чела.
+# db = sqlite3.connect('../data/users.db')
+# cursor = db.cursor()
+# cursor.execute("DELETE FROM users WHERE rowid = 6")
+# db.commit()
+# db.close()
+
+# print(user_presents(617139029, '../data/users.db'))

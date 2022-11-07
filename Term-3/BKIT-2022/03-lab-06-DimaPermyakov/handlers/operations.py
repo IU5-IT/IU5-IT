@@ -3,6 +3,7 @@ from aiogram import Dispatcher, types
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.dispatcher import FSMContext
 import aiogram.utils.markdown as md
+from keyboards.menu_bts import *
 from create_bot import dp, bot
 from utils.db_management import *
 
@@ -22,30 +23,23 @@ async def handler_start(message: types.Message):
     # Если пользователь уже зарегистрирован.
     user_data = get_user_data(message.chat.id)
     if user_data is not None:
-        text = f"Класс! Вы уже зарегистрированы! Вот ваши данные:\n" \
-               f"Имя: {user_data[1]}\n" \
-               f"Возраст: {user_data[2]}\n" \
-               f"Место жительства: {user_data[3]}\n" \
-               f"Университет: {user_data[4]}\n" \
-               f"Факультет: {user_data[5]}\n" \
-               f"О себе: {user_data[6]}\n"
-
+        text = "Класс! Вы уже зарегистрированы!"
         await message.answer(text=text)
         await message.answer_photo(
             photo=user_data[7],
             caption=md.text(
-                md.text('Так выглядит твоя анкета:\n'),
+                md.text('Так выглядит Ваша анкета:\n'),
                 md.text(user_data[1] + ", " + str(user_data[2]) + ", " + user_data[3]),
                 md.text(user_data[4] + ", " + user_data[5]),
-                md.text('О себе:'),
+                md.text('О себе:\n'),
                 md.text(user_data[6]),
                 sep='\n',
             )
         )
-        # TODO: А что дальше? Придумать.
+        await message.answer('Выберите дальнейший сценарий:', reply_markup=start_markup)
 
     else:
-        await message.answer("Давайте Вас зарегистрируем!")
+        await message.answer("О, новичок!\nДавайте Вас зарегистрируем!")
         await FSMUsers.photo.set()
         await message.answer("Отправьте ваше фото:")
 
@@ -99,18 +93,42 @@ async def catch_description(message: types.Message, state: FSMContext):
         await message.answer_photo(
             photo=data['photo'],
             caption=md.text(
-                md.text('Так выглядит твоя анкета:\n'),
+                md.text('Так выглядит Ваша анкета:\n'),
                 md.text(data['name'] + ", " + data['age'] + ", " + data['place']),
                 md.text(data['university'] + ", " + data['department']),
-                md.text('О себе:'),
+                md.text('О себе:\n'),
                 md.text(data['description']),
                 sep='\n',
             )
         )
         # Добавляет в SQL таблицу.
-        set_user_date(message.chat.id, dict(data))
+        if user_presents(message.chat.id):
+            update_user_data(message.chat.id, dict(data))
+        else:
+            set_user_date(message.chat.id, dict(data))
 
     await state.finish()
+
+
+async def all_msg_handler(message: types.Message):
+    button_text = message.text
+
+    if button_text == 'Заполнить анкету заново':
+        await FSMUsers.photo.set()
+        await message.answer("Отправьте ваше фото:", reply_markup=types.ReplyKeyboardRemove())
+
+    elif button_text == 'Изменить текст анкеты':
+        reply_text = "В разработке"
+        await message.reply(reply_text)
+
+    elif button_text == 'Искать друзей 🤝':
+        reply_text = "В разработке"
+        await message.reply(reply_text)
+
+    else:
+        reply_text = "Keep calm... Everything is fine, you just a silly"
+        await message.reply(reply_text)
+        await message.delete()
 
 
 def register_handlers(dp_main: Dispatcher):
@@ -122,3 +140,5 @@ def register_handlers(dp_main: Dispatcher):
     dp_main.register_message_handler(catch_university, state=FSMUsers.university)
     dp_main.register_message_handler(catch_department, state=FSMUsers.department)
     dp_main.register_message_handler(catch_description, state=FSMUsers.description)
+    # Last point!! Important!
+    dp_main.register_message_handler(all_msg_handler)
