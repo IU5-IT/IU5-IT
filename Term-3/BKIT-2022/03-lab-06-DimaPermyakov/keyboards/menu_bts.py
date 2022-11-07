@@ -1,7 +1,12 @@
 # Copyright © 2022 mightyK1ngRichard <dimapermyakov55@gmail.com>
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
-markup = ReplyKeyboardMarkup(resize_keyboard=True)
-b1 = KeyboardButton('')
-b2 = KeyboardButton('')
-markup.row(b1, b2)
+start_markup = ReplyKeyboardMarkup(resize_keyboard=True)
+buttons = (
+    'Заполнить анкету заново',
+    'Изменить фото',
+    'Изменить текст анкеты',
+    'Искать друзей 🤝'
+)
+
+start_markup.row(*(el for el in buttons[:2])).row(*(el for el in buttons[2:4]))
