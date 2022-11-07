@@ -6,6 +6,8 @@ This bot has was been written on the aiogram module. All data storage in sql-tab
 
 The main purpose of the bot: to meet students to each other.
 
+Welcome to the bot: https://t.me/BMSTUstudentsBOT
+
 ## Code Locations:
 1. [The code of the laboratory work.](https://github.com/IU5-IT/IU5-IT/blob/master/Term-3/BKIT-2022/03-lab-06-DimaPermyakov/main.py)
 2. [The report of the laboratory work.](#)
