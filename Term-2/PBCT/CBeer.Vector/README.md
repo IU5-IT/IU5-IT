@@ -1,7 +1,6 @@
-# vector
-Cbeer
+# Vector
+<img src="https://img.shields.io/github/license/mightyK1ngRichard/IU5?color=brightgreen" alt="MIT License"> <img src="https://img.shields.io/badge/language-C++-purple.svg" alt="C++">
 
-Что может мой вектор? Да всё, что может обычный вектор stl.
 - итераторы
 - at
 - front
@@ -16,5 +15,4 @@ Cbeer
 - insert
 - push-back
 - pop-back
-- swap <br>
-PS. Итераторы не работают с STL. 
+- swap 

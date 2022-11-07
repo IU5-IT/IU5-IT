@@ -1,5 +1,5 @@
 # Module test #1
-<img src="https://img.shields.io/github/license/DimaPermyakov/IU5?color=brightgreen" alt="MIT License"> <img src="https://img.shields.io/badge/language-Python-green.svg" alt="Python Language">
+<img src="https://img.shields.io/github/license/DimaPermyakov/IU5?color=brightgreen" alt="MIT License"> <img src="https://img.shields.io/badge/language-Python-blue.svg" alt="Python Language">
 
 
 ## Code navigation.
@@ -12,5 +12,3 @@
 - [PDF.](https://github.com/IU5-IT/IU5-IT/blob/main/Term-3/BKIT-2022/Module-test-01/03-moduleTest-01-DmitriyPermyakov/docs/Report/ModuleTestReport.pdf)
 
 ### The task of the module test is located [here.](https://github.com/IU5-IT/IU5-IT/blob/main/Term-3/BKIT-2022/Module-test-01/03-moduleTest-01-DmitriyPermyakov/docs/Task.md)
-
-## #TODO: Result.

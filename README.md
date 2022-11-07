@@ -7,4 +7,8 @@
 
 #### 2nd course:
 - 2022 autumn - [Term-3](https://github.com/IU5-IT/IU5-IT/tree/main/Term-3)
-- 2023 spring - [Term-4]()
+- 2023 spring - [Term-4](https://github.com/IU5-IT/IU5-IT/tree/main/Term-4)
+
+#### 3rd course:
+- 2023 autumn - [Term-5](https://github.com/IU5-IT/IU5-IT/tree/main/Term-5)
+- 2024 spring - [Term-6]()

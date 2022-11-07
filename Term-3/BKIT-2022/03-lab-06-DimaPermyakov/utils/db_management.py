@@ -5,11 +5,11 @@ from random import choice
 
 # Теория.
 '''
-db = sqlite3.connect('../data/users.db')
+db = sqlite3.connect('../data/users_old.db')
 cursor = db.cursor()
 
 --- Создание.
-db = sqlite3.connect('../data/users.db')
+db = sqlite3.connect('../data/users_old.db')
 cursor = db.cursor()
 cursor.execute("""CREATE TABLE users (
     id_user integer,
@@ -54,7 +54,7 @@ db.close()
 '''
 
 
-def update_name(id_user: int, new_name: str, filename: str = 'data/users.db') -> None:
+def update_name(id_user: int, new_name: str, filename: str = 'data/users_old.db') -> None:
     db = sqlite3.connect(filename)
     cursor = db.cursor()
     cursor.execute(f"UPDATE users SET name = '{new_name}' WHERE id_user = {id_user}")
@@ -62,7 +62,7 @@ def update_name(id_user: int, new_name: str, filename: str = 'data/users.db') ->
     db.close()
 
 
-def get_user_data(id_user: int, filename: str = 'data/users.db') -> tuple | None:
+def get_user_data(id_user: int, filename: str = 'data/users_old.db') -> tuple | None:
     db = sqlite3.connect(filename)
     cursor = db.cursor()
     cursor.execute(f"SELECT * FROM users WHERE id_user = {id_user}")
@@ -72,7 +72,7 @@ def get_user_data(id_user: int, filename: str = 'data/users.db') -> tuple | None
     return res
 
 
-def get_random_user_form(id_user: int, filename: str = 'data/users.db') -> tuple:
+def get_random_user_form(id_user: int, filename: str = 'data/users_old.db') -> tuple:
     db = sqlite3.connect(filename)
     cursor = db.cursor()
     cursor.execute(f"SELECT id_user FROM users WHERE id_user <> {id_user}")
@@ -83,7 +83,7 @@ def get_random_user_form(id_user: int, filename: str = 'data/users.db') -> tuple
     return res
 
 
-def set_user_date(id_user: int, data: dict, filename: str = 'data/users.db'):
+def set_user_date(id_user: int, data: dict, filename: str = 'data/users_old.db'):
     db = sqlite3.connect(filename)
     cursor = db.cursor()
     cursor.execute(
@@ -99,7 +99,7 @@ def set_user_date(id_user: int, data: dict, filename: str = 'data/users.db'):
     db.close()
 
 
-def update_user_data(id_user: int, data: dict, filename: str = 'data/users.db'):
+def update_user_data(id_user: int, data: dict, filename: str = 'data/users_old.db'):
     db = sqlite3.connect(filename)
     cursor = db.cursor()
     cursor.execute(
@@ -114,7 +114,7 @@ def update_user_data(id_user: int, data: dict, filename: str = 'data/users.db'):
     db.close()
 
 
-def update_user_description(id_user: int, description: str, filename: str = 'data/users.db'):
+def update_user_description(id_user: int, description: str, filename: str = 'data/users_old.db'):
     db = sqlite3.connect(filename)
     cursor = db.cursor()
     cursor.execute(f"UPDATE users SET description = '{description}' WHERE id_user = {id_user}")
@@ -122,7 +122,7 @@ def update_user_description(id_user: int, description: str, filename: str = 'dat
     db.close()
 
 
-def update_user_photo(id_user: int, photo: str, filename: str = 'data/users.db'):
+def update_user_photo(id_user: int, photo: str, filename: str = 'data/users_old.db'):
     db = sqlite3.connect(filename)
     cursor = db.cursor()
     cursor.execute(f"UPDATE users SET photo = '{photo}' WHERE id_user = {id_user}")
@@ -130,7 +130,7 @@ def update_user_photo(id_user: int, photo: str, filename: str = 'data/users.db')
     db.close()
 
 
-def user_presents(id_user: int, filename: str = 'data/users.db') -> bool:
+def user_presents(id_user: int, filename: str = 'data/users_old.db') -> bool:
     """Checking, is user in data or is not.
     :param id_user: id of the checking user.
     :param filename: way and name for file.
@@ -144,21 +144,49 @@ def user_presents(id_user: int, filename: str = 'data/users.db') -> bool:
     db.close()
     return False if len(lst) == 0 else True
 
-# update_name(0, 'Richard', '../data/users.db') res = get_user_data(0, '../data/users.db') print(res) print((
-# get_user_data(1, '../data/users.db')))
-# print(beautiful_tuple_of_user_data(0, '../data/users.db'))
+
+# update_name(0, 'Richard', '../data/users_old.db') res = get_user_data(0, '../data/users_old.db') print(res) print((
+# get_user_data(1, '../data/users_old.db')))
+# print(beautiful_tuple_of_user_data(0, '../data/users_old.db'))
 
 # update_user_data(0, dict(name='Richard', age=19, place='Moscow', university='BMSTU', department='IU5',
 # description='I like only two things: coffee and my GitHub: https://github.com/mightyK1ngRichard',
 # photo='https://sun1.userapi.com/sun1-92/s/v1/ig2/lf3_ugEwdsFS8tmjqLxfFTM3Yax7_lZ7fU0840KOWVvgDOYNnwvS
-# -zfZ3jj2g5p0YfITVkbNJ1V5Dvjj6naWUj6D.jpg?size=1080x1080&quality=95&type=album'), '../data/users.db')
+# -zfZ3jj2g5p0YfITVkbNJ1V5Dvjj6naWUj6D.jpg?size=1080x1080&quality=95&type=album'), '../data/users_old.db')
 
 # --- Удалил ласт чела.
-# db = sqlite3.connect('../data/users.db')
+# db = sqlite3.connect('../data/users_old.db')
 # cursor = db.cursor()
 # cursor.execute("DELETE FROM users WHERE rowid = 6")
 # db.commit()
 # db.close()
 
-# print(user_presents(617139029, '../data/users.db'))
-# print(get_random_user_form('../data/users.db'))
+# print(user_presents(617139029, '../data/users_old.db'))
+# print(get_random_user_form('../data/users_old.db'))
+# db = sqlite3.connect('../data/users_old.db')
+# cursor = db.cursor()
+# cursor.execute("""CREATE TABLE users (
+#     id_user integer,
+#     male text,
+#     name text,
+#     age integer,
+#     place text,
+#     university text,
+#     department text,
+#     description text,
+#     photo text,
+#     connect text
+# )""")
+# db.commit()
+# db.close()
+#
+# # https://vk.com/id345691818
+# db = sqlite3.connect('../data/users.db')
+# cursor = db.cursor()
+# cursor.execute(
+#     "INSERT INTO users VALUES (0, 'Richard', 19, 'Moscow', 'IU5', 'I like only two things: coffee and my GitHub: "
+#     "https://github.com/mightyK1ngRichard', 'https://vk.com/id345691818')"
+#
+# )
+# db.commit()
+# db.close()
