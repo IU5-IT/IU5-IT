@@ -188,6 +188,27 @@ async def all_msg_handler(message: types.Message):
         await message.delete()
 
 
+async def update_user_photo_fsm(message: types.Message, state: FSMContext):
+    async with state.proxy() as data:
+        data['photo'] = message.photo[0].file_id
+    temp_id = message.chat.id
+    update_user_photo(temp_id, data['photo'])
+    new_data = get_user_data(temp_id)
+    await message.answer_photo(
+        photo=new_data[7],
+        caption=md.text(
+            md.text('Так выглядит Ваша анкета:\n'),
+            md.text(f'{new_data[1]}, {new_data[2]}, {new_data[3]}'),
+            md.text(f'{new_data[4]}, {new_data[5]}'),
+            md.text('О себе:'),
+            md.text(new_data[6]),
+            sep='\n',
+        )
+    )
+    await state.finish()
+    await message.answer('Выберите новый сценарий:', reply_markup=start_markup)
+
+
 @dp.callback_query_handler(text=['like', 'write', 'dislike', 'info'])
 async def inline_kb_answer_callback_handler(query: types.CallbackQuery):
     answer_data = query.data
@@ -232,26 +253,6 @@ async def inline_kb_answer_callback_handler(query: types.CallbackQuery):
     else:
         text = f'Unexpected callback data {answer_data!r}!'
         await query.message.answer(text)
-
-
-async def update_user_photo_fsm(message: types.Message, state: FSMContext):
-    async with state.proxy() as data:
-        data['photo'] = message.photo[0].file_id
-    temp_id = message.chat.id
-    update_user_photo(temp_id, data['photo'])
-    new_data = get_user_data(temp_id)
-    await message.answer_photo(
-        photo=new_data[7],
-        caption=md.text(
-            md.text('Так выглядит Ваша анкета:\n'),
-            md.text(f'{new_data[1]}, {new_data[2]}, {new_data[3]}'),
-            md.text(f'{new_data[4]}, {new_data[5]}'),
-            md.text('О себе:'),
-            md.text(new_data[6]),
-            sep='\n',
-        )
-    )
-    await message.answer('Выберите новый сценарий:', reply_markup=start_markup)
 
 
 def register_handlers(dp_main: Dispatcher):
