@@ -11,7 +11,7 @@ The main purpose of the bot: to meet students to each other.
 2. [The report of the laboratory work.](#)
 
 
-## [Conditions of the laboratort work.](https://github.com/ugapanyuk/BKIT_2021/wiki/lab_bot2)
+## [Conditions of the laboratory work.](https://github.com/ugapanyuk/BKIT_2021/wiki/lab_bot2)
 
 
 ## Preview:
