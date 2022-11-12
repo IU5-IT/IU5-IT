@@ -12,7 +12,7 @@
 8. [02-lab-08-DmitriyPermyakov](https://github.com/IU5-IT/IU5-IT/tree/master/Term-2/PBCT/02-lab-08-DmitriyPermyakov)
 
 ## Practical work:
-1. [02-practical-work-DmitriyPermyakov]()
+1. [02-practical-work-DmitriyPermyakov](https://github.com/IU5-IT/IU5-IT/tree/master/Term-2/PBCT/Practic/practic)
 
 ## Homework:
-1. [02-homework-01-DmitriyPermyakov]()
+1. [02-homework-01-DmitriyPermyakov](https://github.com/IU5-IT/IU5-IT/tree/master/Term-2/PBCT/Homework)
