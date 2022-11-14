@@ -1,5 +1,5 @@
 # Laboratory work #6.
-<img src="https://img.shields.io/github/license/DimaPermyakov/IU5?color=brightgreen" alt="MIT License"> <img src="https://img.shields.io/badge/language-Python-green.svg" alt="Python Language">
+<img src="https://img.shields.io/github/license/DimaPermyakov/IU5?color=brightgreen" alt="MIT License"> <img src="https://img.shields.io/badge/language-Python-blue.svg" alt="Python Language">
 
 ## About bot:
 This bot has was been written on the aiogram module. All data storage in sql-tables.

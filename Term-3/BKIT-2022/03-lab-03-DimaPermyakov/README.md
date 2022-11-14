@@ -1,6 +1,5 @@
 # Laboratory work #3.
-<img src="https://img.shields.io/github/license/DimaPermyakov/IU5?color=brightgreen" alt="MIT License"> <img src="https://img.shields.io/badge/language-Python-green.svg" alt="Python Language">
-
+<img src="https://img.shields.io/github/license/DimaPermyakov/IU5?color=brightgreen" alt="MIT License"> <img src="https://img.shields.io/badge/language-Python-blue.svg" alt="Python Language">
 ## Code Locations:
 
 1. [The code of the laboratory work.](https://github.com/IU5-IT/IU5-IT/tree/main/Term-3/BKIT-2022/03-lab-03-DimaPermyakov/Code)
