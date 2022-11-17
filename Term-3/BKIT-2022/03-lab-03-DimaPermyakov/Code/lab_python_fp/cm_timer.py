@@ -5,7 +5,7 @@ from contextlib import contextmanager
 
 
 class cm_timer_1:
-    def __int__(self):
+    def __init__(self):
         self.__start = 0
         self.__finish = 0
 
