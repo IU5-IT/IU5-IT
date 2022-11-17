@@ -5,4 +5,4 @@
 
 ## Code Locations:
 - [X] [The code of the laboratory work.](https://github.com/IU5-IT/IU5-IT/blob/master/Term-3/BKIT-2022/03-lab-05-DimaPermyakov/features/steps/tests.py)
-- [ ] [The report of the laboratory work.]()
+- [X] [The report of the laboratory work.](https://github.com/IU5-IT/IU5-IT/blob/master/Term-3/BKIT-2022/03-lab-05-DimaPermyakov/Report/Report-lab-05.pdf)
