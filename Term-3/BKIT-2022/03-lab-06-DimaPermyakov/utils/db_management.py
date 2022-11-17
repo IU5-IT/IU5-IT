@@ -163,30 +163,30 @@ def user_presents(id_user: int, filename: str = 'data/users_old.db') -> bool:
 
 # print(user_presents(617139029, '../data/users_old.db'))
 # print(get_random_user_form('../data/users_old.db'))
-db = sqlite3.connect('../data/users_old.db')
-cursor = db.cursor()
-cursor.execute("""CREATE TABLE users (
-    id_user integer,
-    male text,
-    name text,
-    age integer,
-    place text,
-    university text,
-    department text,
-    description text,
-    photo text,
-    connect text
-)""")
-db.commit()
-db.close()
-
-# https://vk.com/id345691818
-db = sqlite3.connect('../data/users.db')
-cursor = db.cursor()
-cursor.execute(
-    "INSERT INTO users VALUES (0, 'Richard', 19, 'Moscow', 'IU5', 'I like only two things: coffee and my GitHub: "
-    "https://github.com/mightyK1ngRichard', 'https://vk.com/id345691818')"
-
-)
-db.commit()
-db.close()
+# db = sqlite3.connect('../data/users_old.db')
+# cursor = db.cursor()
+# cursor.execute("""CREATE TABLE users (
+#     id_user integer,
+#     male text,
+#     name text,
+#     age integer,
+#     place text,
+#     university text,
+#     department text,
+#     description text,
+#     photo text,
+#     connect text
+# )""")
+# db.commit()
+# db.close()
+#
+# # https://vk.com/id345691818
+# db = sqlite3.connect('../data/users.db')
+# cursor = db.cursor()
+# cursor.execute(
+#     "INSERT INTO users VALUES (0, 'Richard', 19, 'Moscow', 'IU5', 'I like only two things: coffee and my GitHub: "
+#     "https://github.com/mightyK1ngRichard', 'https://vk.com/id345691818')"
+#
+# )
+# db.commit()
+# db.close()
