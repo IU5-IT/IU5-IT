@@ -1,4 +1,6 @@
 # Copyright © 2022 mightyK1ngRichard <dimapermyakov55@gmail.com>
+import requests
+
 
 def fibonacci(end_cycle):
     """
@@ -13,3 +15,8 @@ def fibonacci(end_cycle):
     for _ in range(end_cycle):
         yield old
         old, res = res, old + res
+
+
+if __name__ == '__main__':
+    url = 'https:/127.0.0.1:5000/num/10'
+    r = requests.get(url)
