@@ -4,8 +4,8 @@
 ### The task of the homework is located [here.](https://github.com/ugapanyuk/BKIT_2022/wiki/DZ)
 
 ## Code navigation.
-- [jupyter-code]()
-- [main.py]()
+- [jupyter-notebook](https://nbviewer.org/github/IU5-IT/IU5-IT/blob/master/Term-3/BKIT-2022/Homework/Homework.ipynb)
+- [main.py](https://github.com/IU5-IT/IU5-IT/blob/master/Term-3/BKIT-2022/Homework/main.py)
 
 ## #TODO
 - [ ] [Report.]()
