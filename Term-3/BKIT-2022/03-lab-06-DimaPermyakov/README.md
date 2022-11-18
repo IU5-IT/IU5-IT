@@ -2,7 +2,7 @@
 <img src="https://img.shields.io/github/license/DimaPermyakov/IU5?color=brightgreen" alt="MIT License"> <img src="https://img.shields.io/badge/language-Python-blue.svg" alt="Python Language">
 
 ## About bot:
-This bot has was been written on the aiogram module. All data storage in sql-tables.
+This bot has been written on the aiogram module. All data storage in sql-tables.
 
 The main purpose of the bot: to meet students to each other.
 
