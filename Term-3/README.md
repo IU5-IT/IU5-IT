@@ -9,6 +9,9 @@
 5.  [03-lab-05-DimaPermyakov](https://github.com/IU5-IT/IU5-IT/tree/master/Term-3/BKIT-2022/03-lab-05-DimaPermyakov)
 6. [03-lab-06-DimaPermyakov](https://github.com/IU5-IT/IU5-IT/tree/master/Term-3/BKIT-2022/03-lab-06-DimaPermyakov)
 
+## Homework:
+1. [03-homework-DimaPermyakov](https://github.com/IU5-IT/IU5-IT/tree/master/Term-3/BKIT-2022/Homework)
+
 ## Module tests:
 1. [03-test-01-DimaPermyakov](https://github.com/IU5-IT/IU5-IT/tree/main/Term-3/BKIT-2022/Module-test-01)
 2. [03-test-02-DimaPermyakov](https://github.com/IU5-IT/IU5-IT/tree/main/Term-3/BKIT-2022/Module-test-02) 
