@@ -28,3 +28,6 @@ if __name__ == '__main__':
     plt.ylabel('Ось ординат')
     plt.title('Первые {} чисел последовательности Фибоначчи'.format(len(y_axis)))
     plt.show()
+
+    plt.plot(x_axis, y_axis)
+    plt.show()
