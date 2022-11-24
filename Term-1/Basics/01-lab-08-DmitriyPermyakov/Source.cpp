@@ -1,7 +1,6 @@
 #include "Header.h"
 
-int fact(int num)
-{
+int fact(int num) {
     if (num == 1 || num == 0)
         return 1;
     else
@@ -9,16 +8,12 @@ int fact(int num)
 }
 
 
-void FillArr(double** arr, int rows, int cols, int x)
-{
-    for (int i = 1; i <= rows; ++i)
-    {
-        for (int j = 1; j <= cols; ++j)
-        {
+void FillArr(double **arr, int rows, int cols, int x) {
+    for (int i = 1; i <= rows; ++i) {
+        for (int j = 1; j <= cols; ++j) {
             if (i - 1 == j - 1)
                 arr[i - 1][j - 1] = 1;
-            else
-            {
+            else {
                 if (j - 1 > i - 1)
                     arr[i - 1][j - 1] = pow((-x), i) / (pow((fact(j)), i));
 
@@ -30,8 +25,7 @@ void FillArr(double** arr, int rows, int cols, int x)
 }
 
 
-void PrintArr(double** arr, int rows, int cols, double x)
-{
+void PrintArr(double **arr, int rows, int cols, double x) {
     size_t precision;
     bool typeMatrix;
     std::cout << "Choose the matrix print type: scientific or fixed (1/0): ";
@@ -45,31 +39,27 @@ void PrintArr(double** arr, int rows, int cols, double x)
         length_row = precision + 3;
     size_t cols_new = 81 / length_row;
     size_t printed_cols = 0;
-    while (printed_cols < cols) 
-    {
-        for (size_t i = 0; i < rows; ++i)
-        {
-            for (size_t j = 0; j < cols_new; ++j)
-            {
-                if (typeMatrix)
-                {
-                    if (arr[i][j + printed_cols] < 0) 
-                        std::cout << std::scientific << std::setprecision(precision) << arr[i][j + printed_cols] << "   ";
-                    
+    while (printed_cols < cols) {
+        for (size_t i = 0; i < rows; ++i) {
+            for (size_t j = 0; j < cols_new; ++j) {
+                if (typeMatrix) {
+                    if (arr[i][j + printed_cols] < 0)
+                        std::cout << std::scientific << std::setprecision(precision) << arr[i][j + printed_cols]
+                                  << "   ";
+
                     else
-                        std::cout << std::scientific << std::setprecision(precision) << ' ' << arr[i][j + printed_cols] << "   ";
-                    
+                        std::cout << std::scientific << std::setprecision(precision) << ' ' << arr[i][j + printed_cols]
+                                  << "   ";
+
                     if (printed_cols + j == cols - 1)
                         break;
-                }
-
-                else if (!typeMatrix)
-                {
+                } else if (!typeMatrix) {
                     if (arr[i][j + printed_cols] < 0)
                         std::cout << std::fixed << std::setprecision(precision) << arr[i][j + printed_cols] << "   ";
 
                     else
-                        std::cout << std::fixed << std::setprecision(precision) << ' ' << arr[i][j + printed_cols] << "   ";
+                        std::cout << std::fixed << std::setprecision(precision) << ' ' << arr[i][j + printed_cols]
+                                  << "   ";
 
                     if (printed_cols + j == cols - 1)
                         break;
@@ -79,13 +69,12 @@ void PrintArr(double** arr, int rows, int cols, double x)
             std::cout << std::endl;
         }
         printed_cols += cols_new;
-       
+
         for (size_t i = 0; i < 83; i++)
             std::cout << '_';
         std::cout << std::endl << std::endl;
     }
 }
-
 
 //void Sort(double** arr, int rows, int cols, long double* sum)
 //{
