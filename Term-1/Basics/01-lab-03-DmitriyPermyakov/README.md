@@ -1,3 +1,6 @@
+# Laboratory work 3.
+<img src="https://img.shields.io/github/license/DimaPermyakov/IU5?color=brightgreen" alt="MIT License"> <img src="https://img.shields.io/badge/language-C++-purple.svg" alt="Python Language">
+
 ## Задача 1.
 Найдите сумму натуральных чисел, которые делятся на 5 и не делятся на m (m<n). Количество натуральных чисел n и значение m введите с клавиатуры.
 ## Задача 2.
