@@ -1,3 +1,6 @@
+# Laboratory work 2.
+<img src="https://img.shields.io/github/license/mightyK1ngRichard/IU5?color=brightgreen" alt="MIT License"> <img src="https://img.shields.io/badge/language-C++-purple.svg" alt="Python C++">
+
 # Задание.
 1.1.
 1.	Ознакомиться с приведенным ниже материалом (Введение и Пример 1). Перейти в примере 1 от структуры к классу.
