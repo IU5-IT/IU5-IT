@@ -1,6 +1,8 @@
 # Basic components of Internet technologies.
 <img src="https://img.shields.io/github/license/DimaPermyakov/IU5?color=brightgreen" alt="MIT License"> <img src="https://img.shields.io/badge/language-Python-blue.svg" alt="Python Language">
 
+Professor: [Yuri Evgenievich Gapanyuk](https://github.com/ugapanyuk/BKIT_2022)
+
 ## Laboratory works:
 1. [03-lab-01-DimaPermyakov](https://github.com/IU5-IT/IU5-IT/tree/main/Term-3/BKIT-2022/03-lab-01-DimaPermyakov)
 2. [03-lab-02-DimaPermyakov](https://github.com/IU5-IT/IU5-IT/tree/main/Term-3/BKIT-2022/03-lab-02-DimaPermyakov)
