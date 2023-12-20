@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "not_found.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,57 @@
+table {
+    width: calc(100% - 160px);
+    margin-left: 80px;
+    margin-right: 80px;
+    border-collapse: collapse;
+    background-color: #000000;
+    color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+}
+
+th, td {
+    border: 1px solid #1f1f1f;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: rgba(4, 0, 58, 0.66);
+}
+
+.city-name-td {
+    width: 240px;
+}
+
+.delete-button-td {
+    width: 40px;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.delete-button-td img {
+    width: 100%;
+    height: auto;
+    filter: brightness(1.5); /* Adjust the brightness for the red color effect */
+}
+
+.delete-button-td:hover {
+    box-shadow: 0 0 10px rgba(216, 52, 255, 0.99);
+}
+
+.image-td img {
+    width: 200px;
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+}
+
+.number {
+    width: 20px;
+}
+
+tbody tr:hover {
+    background-color: rgba(40, 111, 255, 0.18); /* Darker background color on hover */
+}

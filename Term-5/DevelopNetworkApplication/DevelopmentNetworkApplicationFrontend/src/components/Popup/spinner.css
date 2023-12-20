@@ -1,0 +1,28 @@
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    position: absolute;
+    z-index: 9999;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #00ff30; /* Neon green color */
+    border-top: 5px solid rgba(138, 255, 163, 0.28); /* Darker shade for variety */
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
+    box-shadow: 0 0 10px rgba(9, 255, 0, 0.8); /* Neon glow effect */
+}

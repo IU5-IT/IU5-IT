@@ -1,0 +1,878 @@
+basePath: /
+definitions:
+  ds.AddCityIntoHikeReq:
+    properties:
+      city_id:
+        example: 1
+        type: integer
+      serial_number:
+        example: 1
+        type: integer
+    required:
+    - city_id
+    - serial_number
+    type: object
+  ds.AddCityIntoHikeResp:
+    properties:
+      id:
+        type: integer
+      status:
+        type: string
+    type: object
+  ds.AddCityResp:
+    properties:
+      city_id:
+        type: string
+      status:
+        type: string
+    type: object
+  ds.AddImageRes:
+    properties:
+      image_url:
+        type: string
+      status:
+        type: string
+    type: object
+  ds.CitiesListResp:
+    properties:
+      basket_id:
+        type: string
+      cities:
+        items:
+          $ref: '#/definitions/ds.City'
+        type: array
+      status:
+        type: string
+    type: object
+  ds.City:
+    properties:
+      city_name:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      image_url:
+        type: string
+      status:
+        $ref: '#/definitions/ds.CityStatus'
+      status_id:
+        type: integer
+    type: object
+  ds.CityStatus:
+    properties:
+      id:
+        type: integer
+      status_name:
+        type: string
+    type: object
+  ds.DeleteCityReq:
+    properties:
+      id:
+        type: string
+    type: object
+  ds.DeleteCityRes:
+    properties:
+      deleted_id:
+        type: integer
+    type: object
+  ds.DeleteDestinationToHikeReq:
+    properties:
+      id:
+        type: integer
+    type: object
+  ds.DeleteDestinationToHikeRes:
+    properties:
+      deleted_destination_hike:
+        type: integer
+      status:
+        type: string
+    type: object
+  ds.DeleteHikeReq:
+    properties:
+      id:
+        type: integer
+    type: object
+  ds.DeleteHikeRes:
+    properties:
+      hike_id:
+        type: integer
+      status:
+        type: string
+    type: object
+  ds.DestinationHikes:
+    properties:
+      city:
+        $ref: '#/definitions/ds.City'
+      city_id:
+        type: integer
+      hike:
+        $ref: '#/definitions/ds.Hike'
+      hike_id:
+        type: integer
+      id:
+        type: integer
+      serial_number:
+        type: integer
+    type: object
+  ds.Hike:
+    properties:
+      date_approve:
+        type: string
+      date_created:
+        type: string
+      date_end:
+        type: string
+      date_start_hike:
+        type: string
+      date_start_of_processing:
+        type: string
+      description:
+        type: string
+      destination_hikes:
+        items:
+          $ref: '#/definitions/ds.DestinationHikes'
+        type: array
+      hike_name:
+        type: string
+      id:
+        type: integer
+      leader:
+        type: string
+      status:
+        $ref: '#/definitions/ds.HikeStatus'
+      status_id:
+        type: integer
+      user:
+        $ref: '#/definitions/ds.User'
+      user_id:
+        type: integer
+    type: object
+  ds.HikeStatus:
+    properties:
+      id:
+        type: integer
+      status_name:
+        type: string
+    type: object
+  ds.HikesListRes:
+    properties:
+      hikes:
+        items:
+          $ref: '#/definitions/ds.Hike'
+        type: array
+      status:
+        type: string
+    type: object
+  ds.HikesListRes2:
+    properties:
+      hikes:
+        items:
+          $ref: '#/definitions/ds.Hike'
+        type: array
+      status:
+        type: string
+    type: object
+  ds.LoginSwaggerResp:
+    properties:
+      access_token:
+        type: string
+      expires_in:
+        type: string
+      token_type:
+        type: string
+    type: object
+  ds.RegisterReq:
+    properties:
+      login:
+        type: string
+      password:
+        type: string
+      user_name:
+        type: string
+    type: object
+  ds.UpdateCityReq:
+    properties:
+      city_name:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      status_id:
+        type: integer
+    required:
+    - id
+    type: object
+  ds.UpdateCityResp:
+    properties:
+      city_name:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      image_url:
+        type: string
+      status_id:
+        type: string
+    type: object
+  ds.UpdateDestinationHikeNumberReq:
+    properties:
+      id:
+        type: integer
+      serial_number:
+        type: integer
+    type: object
+  ds.UpdateDestinationHikeNumberRes:
+    properties:
+      id:
+        type: integer
+      status:
+        type: string
+    type: object
+  ds.UpdateHikeReq:
+    properties:
+      description:
+        type: string
+      hike_name:
+        type: string
+      id:
+        type: integer
+    type: object
+  ds.UpdateStatusForModeratorReq:
+    properties:
+      hike_id:
+        type: integer
+      status_id:
+        type: integer
+    type: object
+  ds.UpdateStatusForUserReq:
+    properties:
+      status_id:
+        example: 2
+        type: integer
+    type: object
+  ds.UpdatedHikeRes:
+    properties:
+      date_approve:
+        type: string
+      date_created:
+        type: string
+      date_end:
+        type: string
+      date_start_hike:
+        type: string
+      date_start_of_processing:
+        type: string
+      description:
+        type: string
+      hike_name:
+        type: string
+      id:
+        type: integer
+      status_id:
+        type: integer
+      user_id:
+        type: integer
+    type: object
+  ds.User:
+    properties:
+      birthday:
+        type: string
+      id:
+        type: integer
+      image_url:
+        type: string
+      login:
+        type: string
+      password:
+        type: string
+      profession:
+        type: string
+      role:
+        $ref: '#/definitions/role.Role'
+      user_name:
+        type: string
+    type: object
+  handler.errorResp:
+    properties:
+      description:
+        example: Описание ошибки
+        type: string
+      status:
+        example: error
+        type: string
+    type: object
+  role.Role:
+    enum:
+    - 0
+    - 1
+    - 2
+    type: integer
+    x-enum-varnames:
+    - Buyer
+    - Moderator
+    - Admin
+host: localhost:7070
+info:
+  contact:
+    email: dimapermyakov55@gmai.com
+    name: API Support
+    url: https://github.com/mightyK1ngRichard
+  description: Viking's hikes
+  title: VIKINGS
+  version: "1.0"
+paths:
+  /api/v3/cities:
+    delete:
+      consumes:
+      - application/json
+      description: Удаление города по его идентификатору.
+      parameters:
+      - description: ID города для удаления
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ds.DeleteCityReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Город успешно удален
+          schema:
+            $ref: '#/definitions/ds.DeleteCityRes'
+        "400":
+          description: Неверный запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "500":
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      security:
+      - ApiKeyAuth: []
+      summary: Удаление города
+      tags:
+      - Города
+    get:
+      description: Получение города(-ов) и фильтрация при поиске
+      parameters:
+      - description: Получаем определённый город
+        in: query
+        name: city
+        type: string
+      - description: Фильтрация поиска
+        in: query
+        name: search
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ds.CitiesListResp'
+        "400":
+          description: Неверный запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "500":
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      security:
+      - ApiKeyAuth: []
+      summary: Список городов
+      tags:
+      - Города
+    post:
+      consumes:
+      - multipart/form-data
+      description: Создание города
+      parameters:
+      - description: Название города
+        in: formData
+        name: city_name
+        required: true
+        type: string
+      - description: ID статуса города
+        in: formData
+        name: status_id
+        required: true
+        type: integer
+      - description: Описание города
+        in: formData
+        name: description
+        required: true
+        type: string
+      - description: Изображение города
+        in: formData
+        name: image_url
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/ds.AddCityResp'
+        "400":
+          description: Неверный запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "500":
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      security:
+      - ApiKeyAuth: []
+      summary: Создание города
+      tags:
+      - Города
+    put:
+      consumes:
+      - application/json
+      description: Обновление информации о городе
+      parameters:
+      - description: Обновленная информация о городе
+        in: body
+        name: updated_city
+        required: true
+        schema:
+          $ref: '#/definitions/ds.UpdateCityReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/ds.UpdateCityResp'
+        "400":
+          description: Неверный запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "500":
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      security:
+      - ApiKeyAuth: []
+      summary: Обновление информации о городе
+      tags:
+      - Города
+  /api/v3/cities/add-city-into-hike:
+    post:
+      consumes:
+      - application/json
+      description: Добавление города в корзину. Если корзина не найдена, она будет
+        сформирована
+      parameters:
+      - description: Данные для добавления города в поход
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ds.AddCityIntoHikeReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ID из destinationHikes
+          schema:
+            $ref: '#/definitions/ds.AddCityIntoHikeResp'
+        "400":
+          description: Неверный запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "500":
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      security:
+      - ApiKeyAuth: []
+      summary: Добавление города в поход
+      tags:
+      - Города
+  /api/v3/cities/upload-image:
+    put:
+      consumes:
+      - multipart/form-data
+      description: Загрузка изображения для указанного города.
+      parameters:
+      - description: Изображение в формате файла
+        in: formData
+        name: file
+        required: true
+        type: file
+      - description: Идентификатор города
+        in: formData
+        name: city_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Успешная загрузка изображения
+          schema:
+            $ref: '#/definitions/ds.AddImageRes'
+        "400":
+          description: Неверный запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "500":
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      security:
+      - ApiKeyAuth: []
+      summary: Загрузка изображения для города
+      tags:
+      - Города
+  /api/v3/destination-hikes:
+    delete:
+      consumes:
+      - application/json
+      description: Удаление локации из истории похода по идентификатору
+      parameters:
+      - description: Идентификатор локации в походе
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ds.DeleteDestinationToHikeReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Удаленный идентификатор локации
+          schema:
+            $ref: '#/definitions/ds.DeleteDestinationToHikeRes'
+        "400":
+          description: Плохой запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "500":
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      summary: Удаление локации из похода
+      tags:
+      - Пункты походов
+    put:
+      consumes:
+      - application/json
+      description: Обновление порядкого номера города в истории похода
+      parameters:
+      - description: Данные для добавления города в поход
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ds.UpdateDestinationHikeNumberReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Updated Destination Hike ID
+          schema:
+            $ref: '#/definitions/ds.UpdateDestinationHikeNumberRes'
+        "400":
+          description: Плохой запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "500":
+          description: Внутренняя ошибку
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      summary: Обновление порядка локаций похода
+      tags:
+      - Пункты походов
+  /api/v3/hikes:
+    delete:
+      consumes:
+      - application/json
+      description: Удаление похода по идентификатору.
+      parameters:
+      - description: Идентификатор похода для удаления
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ds.DeleteHikeReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Успешное удаление похода
+          schema:
+            $ref: '#/definitions/ds.DeleteHikeRes'
+        "400":
+          description: Неверный запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "500":
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      security:
+      - ApiKeyAuth: []
+      summary: Удаление похода
+      tags:
+      - Походы
+    get:
+      description: Получение списка походов с фильтрами по статусу, дате начала и
+        дате окончания.
+      parameters:
+      - description: 'Статус похода. Возможные значения: 1, 2, 3, 4.'
+        in: query
+        name: status_id
+        type: string
+      - description: Дата начала периода фильтрации в формате '2006-01-02'. Если не
+          указана, используется '0001-01-01'.
+        in: query
+        name: start_date
+        type: string
+      - description: Дата окончания периода фильтрации в формате '2006-01-02'. Если
+          не указана, используется текущая дата.
+        in: query
+        name: end_date
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Список походов
+          schema:
+            items:
+              $ref: '#/definitions/ds.HikesListRes2'
+            type: array
+        "204":
+          description: Нет данных
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "400":
+          description: Неверный запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      security:
+      - ApiKeyAuth: []
+      summary: Список походов
+      tags:
+      - Походы
+    put:
+      consumes:
+      - application/json
+      description: Обновление данных о походе. Модератор и админ могут менять данные,
+        пользователь может менять только свою
+      parameters:
+      - description: Данные для обновления похода
+        in: body
+        name: updatedHike
+        required: true
+        schema:
+          $ref: '#/definitions/ds.UpdateHikeReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Успешное обновление данных о походе
+          schema:
+            $ref: '#/definitions/ds.UpdatedHikeRes'
+        "400":
+          description: Неверный запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "500":
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      security:
+      - ApiKeyAuth: []
+      summary: Обновление данных о походе
+      tags:
+      - Походы
+  /api/v3/hikes/{id}:
+    get:
+      description: Получение информации о походе по его ID.
+      parameters:
+      - description: ID похода
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Информация о походе по ID
+          schema:
+            $ref: '#/definitions/ds.HikesListRes2'
+        "400":
+          description: Неверный запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "404":
+          description: Поход не найден
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      summary: Получение информации о походе по его ID.
+      tags:
+      - Походы
+  /api/v3/hikes/update/status-for-moderator:
+    put:
+      consumes:
+      - application/json
+      description: Обновление статуса похода для модератора. Можно только принять(3)
+        отказать(4)
+      parameters:
+      - description: Детали обновления статуса [3, 4]
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/ds.UpdateStatusForModeratorReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Успешное обновление статуса
+          schema:
+            type: string
+        "400":
+          description: Неверный запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "500":
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      security:
+      - ApiKeyAuth: []
+      summary: Обновление статуса похода для модератора
+      tags:
+      - Походы
+  /api/v3/hikes/update/status-for-user:
+    put:
+      consumes:
+      - application/json
+      description: Обновление статуса похода для пользователя. Можно только сформировать(2)
+      parameters:
+      - description: Детали обновления статуса [2]
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/ds.UpdateStatusForUserReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Успешное обновление статуса
+          schema:
+            type: string
+        "400":
+          description: Неверный запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "500":
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      security:
+      - ApiKeyAuth: []
+      summary: Обновление статуса похода для пользователя. Т.е сформировать поход
+      tags:
+      - Походы
+  /api/v3/users/login:
+    post:
+      consumes:
+      - application/json
+      description: Вход нового пользователя.
+      parameters:
+      - description: Детали входа
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ds.RegisterReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Успешная аутентификация
+          schema:
+            $ref: '#/definitions/ds.LoginSwaggerResp'
+        "400":
+          description: Неверный запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "401":
+          description: Неверные учетные данные
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "500":
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      summary: Аутентификация пользователя
+      tags:
+      - Пользователи
+  /api/v3/users/logout:
+    get:
+      consumes:
+      - application/json
+      description: Завершение сеанса текущего пользователя.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Успешный выход
+          schema:
+            type: string
+        "400":
+          description: Неверный запрос
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "401":
+          description: Неверные учетные данные
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+        "500":
+          description: Внутренняя ошибка сервера
+          schema:
+            $ref: '#/definitions/handler.errorResp'
+      security:
+      - ApiKeyAuth: []
+      summary: Выход пользователя
+      tags:
+      - Пользователи
+  /api/v3/users/sign_up:
+    post:
+      consumes:
+      - application/json
+      description: Регистрация нового пользователя.
+      parameters:
+      - description: Детали регистрации
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/ds.RegisterReq'
+      produces:
+      - application/json
+      responses: {}
+      summary: Регистрация пользователя
+      tags:
+      - Пользователи
+schemes:
+- http
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

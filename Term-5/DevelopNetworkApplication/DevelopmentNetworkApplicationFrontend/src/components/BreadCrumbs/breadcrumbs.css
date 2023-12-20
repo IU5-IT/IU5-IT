@@ -1,0 +1,28 @@
+.breadcrumbs {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    font-size: 18px;
+}
+
+.breadcrumb-item-2 {
+    margin-right: 10px;
+    text-decoration: none;
+    position: relative;
+    padding: 5px 10px;
+    display: inline-block;
+    background-color: #2d2d2d;
+    border-radius: 20px;
+}
+
+.breadcrumb-item:last-child {
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.breadcrumb-item:not(:last-child):after {
+    content: '>';
+    margin-left: 10px;
+    color: #ffffff; /* Замените на цвет стрелочки, если необходимо */
+}
+

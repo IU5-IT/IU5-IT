@@ -1,0 +1,84 @@
+.card-city-item {
+    background-color: #18181B;
+    position: relative;
+    overflow: hidden;
+    width: calc(25% - 20px);
+    height: 250px;
+    margin: 10px;
+    border-radius: 20px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container-card {
+    width: 100%;
+    height: 18%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.66);
+    background: linear-gradient(to right, rgba(74, 0, 152, 0.84) 0%, rgba(6, 76, 98, 0.8) 100%);
+    border-radius: 15px 15px 20px 20px;
+    text-align: center;
+    color: #ffffff;
+    font-family: "New Century Schoolbook", "TeX Gyre Schola", serif;
+    font-size: 27px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-city-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 14px rgba(38, 190, 239, 0.8);
+}
+
+.card-city-item:hover .photo {
+    filter: brightness(0.7);
+}
+
+.deleted-trash {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card-city-item:hover .deleted-trash {
+    opacity: 1;
+}
+
+.card-city-item:hover .circle {
+    opacity: 1;
+}
+
+.circle {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 36px;
+    height: 36px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.circle:hover {
+    opacity: 1;
+    background-color: #58d4ff;
+}

@@ -1,0 +1,117 @@
+body {
+    color: #fff;
+    text-align: center;
+}
+
+.card-block {
+    margin-bottom: 90px;
+}
+
+.card {
+    border: 1px solid #000d31;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom: 40px;
+    padding: 20px;
+    display: flex;
+    color: white;
+    flex-direction: column; /* Updated to column layout */
+    background-color: rgba(0, 0, 0);
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.detail-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.description-text-info {
+    text-align: left;
+}
+
+.dark-theme {
+    background-color: #0a0a0a; /* Dark background color */
+    color: #ffffff;
+    border: 1px solid #555; /* Dark border color */
+}
+
+/* Set a larger font size if needed */
+.description-text-info {
+    font-size: 16px;
+}
+
+.author-info {
+    flex-basis: calc(50% - 20px);
+    margin-right: 20px;
+}
+
+.delete-make {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    margin-top: 50px;
+    margin-right: 80px;
+    margin-left: 80px;
+}
+
+.dates-info {
+    border: 1px solid #bdc3c7;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-right: 250px;
+    width: 300px;
+    margin-top: 20px;
+}
+
+.dates-info p {
+    margin: 0;
+    padding: 8px 10px;
+    display: block;
+    width: 100%;
+}
+
+.dates-info p:first-child {
+    font-weight: bold;
+}
+
+.dates-info p:not(:first-child) {
+    border-top: 1px solid #ddd;
+}
+
+.author-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.table-hikes {
+    width: calc(100% - 160px);
+    margin-left: 80px;
+    margin-right: 80px;
+    border-collapse: collapse;
+    background-color: #000000;
+    color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+}
